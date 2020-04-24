@@ -37,13 +37,13 @@ class HeartNet(nn.Module):
             nn.Linear(2048, num_classes)
         )
 
-        for d in self.__dict__['_modules']:
-            for l in getattr(self, d):
-                if hasattr(l, 'weight'):
-                    try:
-                        nn.init.xavier_uniform_(l.weight)
-                    except Exception as e:
-                        print(e)
+        # for d in self.__dict__['_modules']:
+        #     for l in getattr(self, d):
+        #         if hasattr(l, 'weight'):
+        #             try:
+        #                 nn.init.xavier_uniform_(l.weight)
+        #             except Exception as e:
+        #                 print(e)
 
 
     def forward(self, x):
