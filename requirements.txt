@@ -1,0 +1,7 @@
+tqdm==4.36.1
+opencv_python_headless==4.2.0.32
+numpy==1.17.3
+matplotlib==3.1.2
+pandas==0.25.3
+scikit_learn==0.22.2.post1
+wfdb==2.2.1
