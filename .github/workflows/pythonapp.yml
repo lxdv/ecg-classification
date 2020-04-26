@@ -2,9 +2,9 @@ name: ECG
 
 on:
   push:
-    branches: [ master ]
+    branches: [ feature/actions-ci ]
   pull_request:
-    branches: [ master ]
+    branches: [ feature/actions-ci ]
 
 jobs:
   Test:
