@@ -20,6 +20,6 @@ jobs:
         python -m pip install -r requirements.txt
     - name: Dataset-generation
       run : |
-        python dataset-generation.py
+        python dataset-generation-pool.py
       working-directory:
         ./scripts
