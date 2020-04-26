@@ -1,0 +1,22 @@
+{
+  "exp_name":"exp-002",
+  "type": "Trainer2D",
+  "device": "cuda:1",
+
+  "train_json": "data/train.json",
+  "val_json": "data/val.json",
+  "mapping_json": "data/class-mapper.json",
+  "num_classes": 8,
+
+  "batch_size": 128,
+  "optim": "Adam",
+  "optim_params":
+  {
+    "lr": 1e-3
+  },
+
+  "num_workers": 3,
+  "exp_dir" : "experiments/",
+
+  "model_path": 0
+}
