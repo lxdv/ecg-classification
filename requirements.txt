@@ -1,6 +1,8 @@
-tqdm==4.36.1
+torch==1.4.0
 opencv_python_headless==4.2.0.32
 numpy==1.17.3
+tqdm==4.36.1
+albumentations==0.4.3
 matplotlib==3.1.2
 pandas==0.25.3
 scikit_learn==0.22.2.post1
