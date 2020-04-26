@@ -21,3 +21,5 @@ jobs:
     - name: Dataset-generation
       run : |
         python dataset-generation.py
+      working-directory:
+        ./scripts
