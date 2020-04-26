@@ -2,12 +2,12 @@ name: ECG
 
 on:
   push:
-    branches: [ feature/actions-ci ]
+    branches: [ dev ]
   pull_request:
-    branches: [ feature/actions-ci ]
+    branches: [ dev ]
 
 jobs:
-  Test:
+  CI:
     runs-on: ubuntu-16.04
     steps:
     - uses: actions/checkout@v2
@@ -18,13 +18,13 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install -r requirements.txt
-    - name: Dataset generation
+    - name: Generate data files
       run : |
         python dataset-generation-pool.py
       working-directory:
         ./scripts
 
-    - name: Dataset annotation files generation
+    - name: Generate annotation files
       run: |
         python annotation-generation.py
       working-directory:
