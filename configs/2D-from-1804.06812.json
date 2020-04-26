@@ -1,7 +1,7 @@
 {
   "exp_name":"exp-002",
   "type": "Trainer2D",
-  "device": "cuda:1",
+  "device": "cpu",
 
   "train_json": "data/train.json",
   "val_json": "data/val.json",
@@ -18,5 +18,6 @@
   "num_workers": 3,
   "exp_dir" : "experiments/",
 
-  "model_path": 0
+  "model_path": 0,
+  "epochs": 1
 }
