@@ -1,7 +1,7 @@
 {
-  "exp_name":"exp-006",
+  "exp_name":"exp-007",
   "type": "Trainer2D",
-  "device": "cuda:1",
+  "device": "cuda:0",
 
   "train_json": "data/train.json",
   "val_json": "data/val.json",
@@ -12,7 +12,7 @@
   "optim": "Adam",
   "optim_params":
   {
-    "lr": 1e-3
+    "lr": 1e-4
   },
 
   "num_workers": 3,
