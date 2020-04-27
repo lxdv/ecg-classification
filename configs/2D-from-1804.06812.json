@@ -1,5 +1,5 @@
 {
-  "exp_name":"exp-005",
+  "exp_name":"exp-006",
   "type": "Trainer2D",
   "device": "cuda:1",
 

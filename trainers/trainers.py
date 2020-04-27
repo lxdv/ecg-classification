@@ -63,11 +63,11 @@ class Trainer2D(BaseTrainer):
             if (i + 1) % 10 == 0:
                 print("\tIter [%d/%d] Loss: %.4f" % (i + 1, len(self.train_loader), loss.item()))
 
-            if (self.total_iter + 1) % 1000 == 0:
-                for g in self.optimizer.param_groups:
-                    lr = g['lr']
-                    g['lr'] *= 0.95
-                    print('LR changed from {} to {}'.format(lr, g['lr']))
+            # if (self.total_iter + 1) % 1000 == 0:
+            #     for g in self.optimizer.param_groups:
+            #         lr = g['lr']
+            #         g['lr'] *= 0.95
+            #         print('LR changed from {} to {}'.format(lr, g['lr']))
 
             self.writer.add_scalar("Train loss (iterations)", loss.item(), self.total_iter)
             self.total_iter += 1
