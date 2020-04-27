@@ -14,7 +14,8 @@ from utils.network_utils import save_checkpoint
 class Trainer2D(BaseTrainer):
     def __init__(self, config):
         super().__init__(config)
-        self.criterion = nn.CrossEntropyLoss().to(self.device)
+        self.criterion = nn.CrossEntropyLoss(weight=torch.tensor([0.00105529, 0.00977277, 0.03100401, 0.01087277, 0.01107286,
+       0.02180564, 0.16705689, 0.74735977])).to(self.device)
 
     def _init_net(self):
         model = HeartNet(num_classes=self.config['num_classes'])
