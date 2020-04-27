@@ -19,5 +19,5 @@
   "exp_dir" : "experiments/",
 
   "model_path": 0,
-  "epochs": 1
+  "epochs": 5
 }
