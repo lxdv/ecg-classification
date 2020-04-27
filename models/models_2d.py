@@ -60,3 +60,9 @@ class MobileNetV2(models.MobileNetV2):
 class AlexNet(models.AlexNet):
     def __init__(self, num_classes=8):
         super().__init__(num_classes=num_classes)
+
+
+def VGG16bn(num_classes=8):
+    model = models.vgg16_bn()
+    model.classifier[-1] = nn.Linear(model.classifier[-1].in_features, num_classes)
+    return model
