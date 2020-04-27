@@ -6,7 +6,7 @@ from torch import optim, nn
 from tqdm import tqdm
 
 from dataloaders.dataset2d import EcgDataset2D
-from models.models_2d import HeartNet, MobileNetV2
+from models.models_2d import HeartNet, MobileNetV2, AlexNet
 from trainers.base_trainer import BaseTrainer
 from utils.network_utils import save_checkpoint
 
@@ -17,7 +17,7 @@ class Trainer2D(BaseTrainer):
         self.criterion = nn.CrossEntropyLoss().to(self.device)
 
     def _init_net(self):
-        model = MobileNetV2(num_classes=self.config['num_classes'])
+        model = AlexNet(num_classes=self.config['num_classes'])
         model = model.to(self.device)
         return model
 
