@@ -20,7 +20,7 @@ class EcgDataset2D(Dataset):
 
     def __getitem__(self, index):
         img = cv2.imread(self.data[index]['path'])
-        img = augment(**{"image": img})['image'][:1, ...]
+        img = augment(**{"image": img})['image']
 
         return {
             "image": img,
@@ -28,9 +28,8 @@ class EcgDataset2D(Dataset):
         }
 
 
-    def get_dataloader(self, num_workers=4, batch_size=16, shuffle=False):
-        data_loader = DataLoader(self, batch_size=batch_size, shuffle=shuffle, num_workers=num_workers,
-                                 sampler=ImbalancedDatasetSampler(self, callback_get_label=callback_get_label))
+    def get_dataloader(self, num_workers=4, batch_size=16, shuffle=True):
+        data_loader = DataLoader(self, batch_size=batch_size, shuffle=shuffle, num_workers=num_workers)
         return data_loader
 
     def __len__(self):

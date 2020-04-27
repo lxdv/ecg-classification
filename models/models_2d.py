@@ -1,4 +1,7 @@
 import torch.nn as nn
+from torch.hub import load_state_dict_from_url
+from torchvision import models
+
 
 
 class HeartNet(nn.Module):
@@ -43,3 +46,12 @@ class HeartNet(nn.Module):
         x = x.view(x.size(0), 16 * 16 * 256)
         x = self.classifier(x)
         return x
+
+
+class MobileNetV2(models.MobileNetV2):
+    def __init__(self, num_classes=8):
+        super().__init__(num_classes=num_classes)
+        # state_dict = load_state_dict_from_url('https://download.pytorch.org/models/mobilenet_v2-b0353104.pth',
+        #                                       progress=True)
+        # self.load_state_dict(state_dict)
+        # self.classifier[1] = nn.Linear(in_features=1280, out_features=num_classes)
