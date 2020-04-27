@@ -66,3 +66,9 @@ def VGG16bn(num_classes=8):
     model = models.vgg16_bn()
     model.classifier[-1] = nn.Linear(model.classifier[-1].in_features, num_classes)
     return model
+
+
+def ResNet(num_classes=8):
+    model = models.resnet18()
+    model.fc = nn.Linear(model.fc.in_features, num_classes)
+    return model
