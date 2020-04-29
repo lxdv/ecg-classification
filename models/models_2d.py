@@ -1,6 +1,7 @@
 import torch.nn as nn
 from torch.hub import load_state_dict_from_url
 from torchvision import models
+from efficientnet_pytorch import EfficientNet as efficientnet
 
 
 
@@ -77,4 +78,9 @@ def ResNet(num_classes=8):
 def ShuffleNet(num_classes=8):
     model = models.shufflenet_v2_x1_0()
     model.fc = nn.Linear(model.fc.in_features, num_classes)
+    return model
+
+def EfficientNet(num_classes=8):
+    model = efficientnet.from_name('efficientnet-b3')
+    model._fc = nn.Linear(model._fc.in_features, num_classes)
     return model
