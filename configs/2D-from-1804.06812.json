@@ -1,5 +1,5 @@
 {
-  "exp_name":"exp-021",
+  "exp_name":"exp-022",
   "type": "Trainer2D",
   "device": "cuda:1",
 
@@ -8,7 +8,7 @@
   "mapping_json": "data/class-mapper.json",
   "num_classes": 8,
 
-  "batch_size": 128,
+  "batch_size": 64,
   "optim": "Adam",
   "optim_params":
   {
