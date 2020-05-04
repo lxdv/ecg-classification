@@ -1,7 +1,7 @@
 {
-  "exp_name":"exp-022",
+  "exp_name":"exp-023",
   "type": "Trainer2D",
-  "device": "cuda:1",
+  "device": "cuda:0",
 
   "train_json": "data/train.json",
   "val_json": "data/val.json",
