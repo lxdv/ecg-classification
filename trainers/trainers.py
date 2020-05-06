@@ -10,7 +10,7 @@ from dataloaders.dataset1d import EcgDataset1D
 from models.models_2d import ResNet
 from trainers.base_trainer import BaseTrainer
 from utils.network_utils import save_checkpoint
-from models.models_1d import HeartNetIEEE
+from models.models_1d import HeartNetZolotyh
 
 
 class Trainer2D(BaseTrainer):
@@ -129,7 +129,7 @@ class Trainer1D(BaseTrainer):
         self.criterion = nn.CrossEntropyLoss().to(self.device)
 
     def _init_net(self):
-        model = HeartNetIEEE(num_classes=self.config['num_classes'])
+        model = HeartNetZolotyh(num_classes=self.config['num_classes'])
         model = model.to(self.device)
         return model
 
