@@ -7,8 +7,8 @@ def conv_block(in_planes, out_planes, stride=1, groups=1, dilation=1):
                      padding=8, groups=groups, bias=False, dilation=dilation)
 
 
-def conv_subsumpling(in_planes, out_planes):
-    return nn.Conv1d(in_planes, out_planes, kernel_size=1, stride=1, bias=False)
+def conv_subsumpling(in_planes, out_planes, stride=1):
+    return nn.Conv1d(in_planes, out_planes, kernel_size=1, stride=stride, bias=False)
 
 
 class BasicBlock(nn.Module):
@@ -45,9 +45,8 @@ class BasicBlock(nn.Module):
 
         if self.downsample is not None:
             identity = self.downsample(x)
-            identity = F.max_pool1d(identity, self.stride)
-        else:
-            identity = F.max_pool1d(identity, 1)
+
+        identity = F.max_pool1d(identity, 1)
 
         out += identity
 
@@ -107,13 +106,13 @@ class HeartNet(nn.Module):
         norm_layer = self._norm_layer
         downsample = None
         previous_dilation = self.dilation
-        self.stride = stride
         if dilate:
             self.dilation *= stride
             stride = 1
         if stride != 1 or self.inplanes != planes * block.expansion:
             downsample = nn.Sequential(
-                conv_subsumpling(self.inplanes, planes * block.expansion)
+                conv_subsumpling(self.inplanes, planes * block.expansion, stride),
+                norm_layer(planes * block.expansion),
             )
 
         layers = []
