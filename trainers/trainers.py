@@ -129,7 +129,7 @@ class Trainer1D(BaseTrainer):
         self.criterion = nn.CrossEntropyLoss().to(self.device)
 
     def _init_net(self):
-        model = HeartNet([1, 2, 2, 2, 2, 2, 2, 2, 1], num_classes=self.config['num_classes'])
+        model = HeartNet([1, 5, 5, 5], num_classes=self.config['num_classes'])
         model = model.to(self.device)
         return model
 
