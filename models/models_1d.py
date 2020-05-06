@@ -1,5 +1,4 @@
 import torch.nn as nn
-import torch.nn.functional as F
 
 
 def conv_block(in_planes, out_planes, stride=1, groups=1, dilation=1):
@@ -45,8 +44,6 @@ class BasicBlock(nn.Module):
 
         if self.downsample is not None:
             identity = self.downsample(x)
-
-        identity = F.max_pool1d(identity, 1)
 
         out += identity
 
