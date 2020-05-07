@@ -1,5 +1,5 @@
 {
-  "exp_name":"EcgResNet34",
+  "exp_name":"HeartNet1D",
   "type": "Trainer1D",
   "device": "cuda:0",
   "model": "HeartNet",
