@@ -1,0 +1,23 @@
+{
+  "exp_name":"exp-efficientnet",
+  "type": "Trainer2D",
+  "device": "cuda:0",
+  "model": "EfficientNetB4",
+
+  "train_json": "data-ft/train.json",
+  "val_json": "data-ft/val.json",
+  "mapping_json": "data-ft/class-mapper.json",
+  "num_classes": 8,
+
+  "batch_size": 32,
+  "optim": "Adam",
+  "optim_params":
+  {
+    "lr": 1e-3
+  },
+
+  "num_workers": 3,
+  "exp_dir" : "experiments/",
+
+  "model_path": 0
+}
