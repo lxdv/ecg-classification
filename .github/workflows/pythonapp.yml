@@ -26,6 +26,6 @@ jobs:
 
     - name: Generate annotation files
       run: |
-        python annotation-generation.py
+        python annotation-generation-1d.py
       working-directory:
         ./scripts
