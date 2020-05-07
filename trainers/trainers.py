@@ -6,7 +6,7 @@ from torch import optim, nn
 from tqdm import tqdm
 
 from dataloaders.dataset2d import EcgDataset2D
-from models import models_2d
+from models import models2d
 from trainers.base_trainer import BaseTrainer
 from utils.network_utils import save_checkpoint
 
@@ -17,7 +17,7 @@ class Trainer2D(BaseTrainer):
         self.criterion = nn.CrossEntropyLoss().to(self.config['device'])
 
     def _init_net(self):
-        model = getattr(models_2d, self.config['model'])(num_classes=self.config['num_classes'])
+        model = getattr(models2d, self.config['model'])(num_classes=self.config['num_classes'])
         model = model.to(self.config['device'])
         return model
 
