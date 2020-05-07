@@ -6,7 +6,7 @@ from trainers import trainers
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--config', default="configs/2D-from-1804.06812.json")
+    parser.add_argument('--config', required=True)
     return parser.parse_args()
 
 

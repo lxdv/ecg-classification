@@ -1,11 +1,12 @@
 {
-  "exp_name":"exp-013",
+  "exp_name":"experiment-name",
   "type": "Trainer2D",
   "device": "cuda:0",
+  "model": "MobileNetV2",
 
-  "train_json": "data/train.json",
-  "val_json": "data/val.json",
-  "mapping_json": "data/class-mapper.json",
+  "train_json": "data-ft/train.json",
+  "val_json": "data-ft/val.json",
+  "mapping_json": "data-ft/class-mapper.json",
   "num_classes": 8,
 
   "batch_size": 128,

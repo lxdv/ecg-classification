@@ -13,7 +13,6 @@ class BaseTrainer:
         self.exp_name = self.config.get('exp_name', None)
         if self.exp_name is None:
             self.exp_name = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-        self.device = self.config['device']
 
         self.log_dir = osp.join(self.config['exp_dir'], self.exp_name, 'logs')
         self.pth_dir = osp.join(self.config['exp_dir'], self.exp_name, 'checkpoints')
@@ -24,10 +23,6 @@ class BaseTrainer:
 
         self.model = self._init_net()
         self.optimizer = self._init_optimizer()
-
-        self.train_json = self.config['train_json']
-        self.val_json = self.config['val_json']
-        self.mapping_json = self.config['mapping_json']
 
         self.train_loader, self.val_loader = self._init_dataloaders()
 

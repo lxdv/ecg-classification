@@ -6,7 +6,7 @@ from torch import optim, nn
 from tqdm import tqdm
 
 from dataloaders.dataset2d import EcgDataset2D
-from models.models_2d import HeartNet, MobileNetV2, AlexNet, VGG16bn, ResNet, ShuffleNet
+from models import models_2d
 from trainers.base_trainer import BaseTrainer
 from utils.network_utils import save_checkpoint
 
@@ -14,18 +14,18 @@ from utils.network_utils import save_checkpoint
 class Trainer2D(BaseTrainer):
     def __init__(self, config):
         super().__init__(config)
-        self.criterion = nn.CrossEntropyLoss().to(self.device)
+        self.criterion = nn.CrossEntropyLoss().to(self.config['device'])
 
     def _init_net(self):
-        model = ShuffleNet(num_classes=self.config['num_classes'])
-        model = model.to(self.device)
+        model = getattr(models_2d, self.config['model'])(num_classes=self.config['num_classes'])
+        model = model.to(self.config['device'])
         return model
 
     def _init_dataloaders(self):
-        train_loader = EcgDataset2D(self.train_json, self.mapping_json).get_dataloader(
+        train_loader = EcgDataset2D(self.config['train_json'], self.config['mapping_json']).get_dataloader(
             batch_size=self.config['batch_size'], num_workers=self.config['num_workers']
         )
-        val_loader = EcgDataset2D(self.val_json, self.mapping_json).get_dataloader(
+        val_loader = EcgDataset2D(self.config['val_json'], self.config['mapping_json']).get_dataloader(
             batch_size=self.config['batch_size'], num_workers=self.config['num_workers']
         )
 
@@ -43,8 +43,8 @@ class Trainer2D(BaseTrainer):
         pd_class = np.empty(0)
 
         for i, batch in enumerate(self.train_loader):
-            inputs = batch['image'].to(self.device)
-            targets = batch['class'].to(self.device)
+            inputs = batch['image'].to(self.config['device'])
+            targets = batch['class'].to(self.config['device'])
 
             predictions = self.model(inputs)
             loss = self.criterion(predictions, targets)
@@ -90,8 +90,8 @@ class Trainer2D(BaseTrainer):
 
         with torch.no_grad():
             for i, batch in tqdm(enumerate(self.val_loader)):
-                inputs = batch['image'].to(self.device)
-                targets = batch['class'].to(self.device)
+                inputs = batch['image'].to(self.config['device'])
+                targets = batch['class'].to(self.config['device'])
 
                 predictions = self.model(inputs)
                 loss = self.criterion(predictions, targets)

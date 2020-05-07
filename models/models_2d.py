@@ -1,7 +1,5 @@
 import torch.nn as nn
-from torch.hub import load_state_dict_from_url
 from torchvision import models
-
 
 
 class HeartNet(nn.Module):
@@ -40,7 +38,6 @@ class HeartNet(nn.Module):
             nn.Linear(2048, num_classes)
         )
 
-
     def forward(self, x):
         x = self.features(x)
         x = x.view(x.size(0), 16 * 16 * 256)
@@ -51,10 +48,6 @@ class HeartNet(nn.Module):
 class MobileNetV2(models.MobileNetV2):
     def __init__(self, num_classes=8):
         super().__init__(num_classes=num_classes)
-        # state_dict = load_state_dict_from_url('https://download.pytorch.org/models/mobilenet_v2-b0353104.pth',
-        #                                       progress=True)
-        # self.load_state_dict(state_dict)
-        # self.classifier[1] = nn.Linear(in_features=1280, out_features=num_classes)
 
 
 class AlexNet(models.AlexNet):
@@ -62,14 +55,20 @@ class AlexNet(models.AlexNet):
         super().__init__(num_classes=num_classes)
 
 
-def VGG16bn(num_classes=8):
+def VGG16(num_classes=8):
     model = models.vgg16_bn()
     model.classifier[-1] = nn.Linear(model.classifier[-1].in_features, num_classes)
     return model
 
 
-def ResNet(num_classes=8):
+def ResNet18(num_classes=8):
     model = models.resnet18()
+    model.fc = nn.Linear(model.fc.in_features, num_classes)
+    return model
+
+
+def ResNet34(num_classes=8):
+    model = models.resnet34()
     model.fc = nn.Linear(model.fc.in_features, num_classes)
     return model
 
