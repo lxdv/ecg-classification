@@ -124,8 +124,8 @@ class BaseTrainer:
         self.writer.add_scalar('Validation CLASS accuracy', class_accuracy, self.training_epoch)
 
     def loop(self):
-        for epoch in range(self.training_epoch + 1, self.epochs + 1):
-            print("Epoch - {}".format(self.training_epoch))
+        for epoch in range(self.training_epoch, self.epochs):
+            print("Epoch - {}".format(self.training_epoch + 1))
             self.train_epoch()
             save_checkpoint({
                 'state_dict': self.model.state_dict(),
