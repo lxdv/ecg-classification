@@ -52,6 +52,8 @@ class BaseRunner:
                 gt_class = np.concatenate((gt_class, batch['class'].numpy()))
                 pd_class = np.concatenate((pd_class, classes))
 
+        np.savetxt(osp.join(self.res_dir, "predictions.txt"), pd_class)
+
         class_accuracy = sum(pd_class == gt_class) / pd_class.shape[0]
 
         print('Validation CLASS accuracy - {:4f}'.format(class_accuracy))
