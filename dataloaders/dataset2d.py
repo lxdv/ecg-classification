@@ -4,6 +4,7 @@ import cv2
 from albumentations import Normalize, Compose
 from albumentations.pytorch.transforms import ToTensorV2
 from torch.utils.data import Dataset, DataLoader
+from torchsampler import ImbalancedDatasetSampler
 
 augment = Compose([
     Normalize(),
@@ -19,12 +20,13 @@ class EcgDataset2D(Dataset):
 
     def __getitem__(self, index):
         img = cv2.imread(self.data[index]['path'])
-        img = augment(**{"image": img})['image'][:1, ...]
+        img = augment(**{"image": img})['image']
 
         return {
             "image": img,
             "class": self.mapper[self.data[index]['label']]
         }
+
 
     def get_dataloader(self, num_workers=4, batch_size=16, shuffle=True):
         data_loader = DataLoader(self, batch_size=batch_size, shuffle=shuffle, num_workers=num_workers)
@@ -32,6 +34,10 @@ class EcgDataset2D(Dataset):
 
     def __len__(self):
         return len(self.data)
+
+
+def callback_get_label(dataset, idx):
+    return dataset[idx]["class"]
 
 
 

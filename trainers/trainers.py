@@ -6,7 +6,7 @@ from torch import optim, nn
 from tqdm import tqdm
 
 from dataloaders.dataset2d import EcgDataset2D
-from models.models_2d import HeartNet
+from models.models_2d import HeartNet, MobileNetV2, AlexNet, VGG16bn, ResNet, ShuffleNet
 from trainers.base_trainer import BaseTrainer
 from utils.network_utils import save_checkpoint
 
@@ -17,7 +17,7 @@ class Trainer2D(BaseTrainer):
         self.criterion = nn.CrossEntropyLoss().to(self.device)
 
     def _init_net(self):
-        model = HeartNet(num_classes=self.config['num_classes'])
+        model = ShuffleNet(num_classes=self.config['num_classes'])
         model = model.to(self.device)
         return model
 
@@ -63,11 +63,11 @@ class Trainer2D(BaseTrainer):
             if (i + 1) % 10 == 0:
                 print("\tIter [%d/%d] Loss: %.4f" % (i + 1, len(self.train_loader), loss.item()))
 
-            if (self.total_iter + 1) % 1000 == 0:
-                for g in self.optimizer.param_groups:
-                    lr = g['lr']
-                    g['lr'] *= 0.95
-                    print('LR changed from {} to {}'.format(lr, g['lr']))
+            # if (self.total_iter + 1) % 1000 == 0:
+            #     for g in self.optimizer.param_groups:
+            #         lr = g['lr']
+            #         g['lr'] *= 0.95
+            #         print('LR changed from {} to {}'.format(lr, g['lr']))
 
             self.writer.add_scalar("Train loss (iterations)", loss.item(), self.total_iter)
             self.total_iter += 1
