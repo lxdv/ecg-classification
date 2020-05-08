@@ -4,6 +4,7 @@
   "device": "cuda:0",
   "model": "EcgResNet34",
   "model_path": "./experiments/exp-029/checkpoints/00000295.pth",
+  "ecg_data": "./mit-bih/105",
 
   "json": "data/val.json",
   "mapping_json": "data/class-mapper.json",
