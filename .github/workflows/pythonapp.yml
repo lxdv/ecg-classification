@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 
 jobs:
-  1804.06812:
+  1804_06812:
     runs-on: ubuntu-16.04
     steps:
     - uses: actions/checkout@v2
