@@ -1,3 +1,4 @@
+future
 torchvision==0.3.0
 plotly==4.7.0
 efficientnet_pytorch==0.6.3
