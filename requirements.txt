@@ -11,3 +11,4 @@ scipy==1.4.1
 pandas==0.25.3
 albumentations==0.4.3
 scikit_learn==0.22.2.post1
+tensorboard==1.14
