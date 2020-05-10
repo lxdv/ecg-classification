@@ -52,8 +52,9 @@ and unzip files into `mit-bih` directory
 4. Create `json` annotation files
     - For 1D model - `cd scripts && python annotation-generation-1d.py`
     - For 2D model - `cd scripts && python annotation-generation-2d.py`
+5. Run training - `python train.py --configs/training/<config>.json`
         
-See [CI](https://github.com/lxdv/ecg-classification/actions) settings for each model
+See [CI examples](https://github.com/lxdv/ecg-classification/actions) for each model
 
 
-
+### MIT-BIH Dataset
