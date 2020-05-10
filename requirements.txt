@@ -1,7 +1,6 @@
 torchvision==0.3.0
 plotly==4.7.0
 efficientnet_pytorch==0.6.3
-torchsampler==0.1
 numpy==1.17.3
 wfdb==2.2.1
 torch==1.1.0
