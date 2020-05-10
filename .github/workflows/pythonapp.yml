@@ -26,6 +26,7 @@ jobs:
 
   arxiv/org/abs/1804.06812:
     needs: [Environment]
+    runs-on: ubuntu-16.04
     steps:
     - name: Generate 2D annotation files
         run: |
