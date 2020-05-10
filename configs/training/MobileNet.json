@@ -2,7 +2,7 @@
   "exp_name":"exp-mobilenet",
   "type": "Trainer2D",
   "device": "cpu",
-  "model": "cpu",
+  "model": "MobileNetV2",
 
   "train_json": "data/train.json",
   "val_json": "data/val.json",

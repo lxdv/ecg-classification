@@ -2,7 +2,7 @@
   "exp_name":"exp-efficientnet",
   "type": "Trainer2D",
   "device": "cuda:0",
-  "model": "cpu",
+  "model": "EfficientNetB4",
 
   "train_json": "data/train.json",
   "val_json": "data/val.json",

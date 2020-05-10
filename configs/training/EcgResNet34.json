@@ -2,7 +2,7 @@
   "exp_name":"EcgResNet34",
   "type": "Trainer1D",
   "device": "cpu",
-  "model": "cpu",
+  "model": "EcgResNet34",
 
   "train_json": "data/train.json",
   "val_json": "data/val.json",
