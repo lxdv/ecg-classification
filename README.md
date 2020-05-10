@@ -43,7 +43,7 @@ National Research University - Higher School of Economics
 
 ## Getting started
 
-Quick start:
+Training quick start:
 
 1. [Download](https://storage.googleapis.com/mitdb-1.0.0.physionet.org/mit-bih-arrhythmia-database-1.0.0.zip) 
 and unzip files into `mit-bih` directory
