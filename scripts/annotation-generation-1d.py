@@ -15,7 +15,7 @@ import pandas as pd
 
 classes = ['N', 'V', '\\', 'R', 'L', 'A', '!', 'E']
 lead = 'MLII'
-extension = 'jpg'  # or `png` for 2D
+extension = 'npy'  # or `png` for 2D
 data_path = osp.abspath('../data/*/*/*/*/*.{}'.format(extension))
 val_size = 0.1  # [0, 1]
 
