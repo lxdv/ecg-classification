@@ -1,4 +1,4 @@
-name: ECG
+name: Other Name
 
 on:
   push:
