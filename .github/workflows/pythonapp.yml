@@ -2,9 +2,9 @@ name: ECG
 
 on:
   push:
-    branches: [ dev ]
+    branches: [ feature/actions-ci ]
   pull_request:
-    branches: [ dev ]
+    branches: [ feature/actions-ci ]
 
 jobs:
   CI:
@@ -29,3 +29,7 @@ jobs:
         python annotation-generation-1d.py
       working-directory:
         ./scripts
+
+    - name : Train network
+      run: |
+        python main.py
