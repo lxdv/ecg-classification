@@ -1,0 +1,15 @@
+future
+torchvision==0.3.0
+plotly==4.7.0
+efficientnet_pytorch==0.6.3
+numpy==1.17.3
+wfdb==2.2.1
+torch==1.1.0
+tqdm==4.42.1
+matplotlib==3.0.3
+opencv_python==4.2.0.32
+scipy==1.4.1
+pandas==0.25.3
+albumentations==0.4.3
+scikit_learn==0.22.2.post1
+tensorboard==1.14

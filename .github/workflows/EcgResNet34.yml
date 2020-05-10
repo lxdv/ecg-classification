@@ -1,0 +1,33 @@
+name: EcgResNet34
+
+on:
+  push:
+    branches: [ dev, feature/actions-ci ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  Train:
+    runs-on: ubuntu-16.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+      - name: Install dependencies
+        run: |
+          python -m pip install -r requirements.txt
+      - name: Generate data files
+        run: |
+          python dataset-generation-pool.py
+        working-directory:
+          ./scripts
+      - name: Generate 1D annotation files
+        run: |
+          python annotation-generation-1d.py
+        working-directory:
+          ./scripts
+      - name: Running training
+        run: |
+          python train.py --config configs/training/EcgResNet34.json
