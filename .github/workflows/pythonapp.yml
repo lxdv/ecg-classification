@@ -33,6 +33,6 @@ jobs:
         working-directory:
           ./scripts
 
-        - name: Running arxiv.org/abs/1804.06812
-          run: |
-            python train.py --config configs/training/1804.06812.json
+    - name: Running arxiv.org/abs/1804.06812
+      run: |
+        python train.py --config configs/training/1804.06812.json
