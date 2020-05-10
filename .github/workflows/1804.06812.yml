@@ -1,13 +1,13 @@
-name: ECG
+name: 1804.06812
 
 on:
   push:
-    branches: [ feature/actions-ci ]
+    branches: [ dev, feature/actions-ci ]
   pull_request:
-    branches: [ feature/actions-ci ]
+    branches: [ master ]
 
 jobs:
-  CI:
+  Train:
     runs-on: ubuntu-16.04
     steps:
     - uses: actions/checkout@v2
@@ -23,13 +23,12 @@ jobs:
         python dataset-generation-pool.py
       working-directory:
         ./scripts
-
-    - name: Generate annotation files
+    - name: Generate 2D annotation files
       run: |
-        python annotation-generation-1d.py
+        python annotation-generation-2d.py
       working-directory:
         ./scripts
 
-    - name : Train network
+    - name: Running training
       run: |
-        python main.py
+        python train.py --config configs/training/1804.06812.json

@@ -4,7 +4,6 @@ import cv2
 from albumentations import Normalize, Compose
 from albumentations.pytorch.transforms import ToTensorV2
 from torch.utils.data import Dataset, DataLoader
-from torchsampler import ImbalancedDatasetSampler
 
 augment = Compose([
     Normalize(),
