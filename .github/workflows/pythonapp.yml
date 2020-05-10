@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 
 jobs:
-  tmp:
+  1804.06812:
     runs-on: ubuntu-16.04
     steps:
     - uses: actions/checkout@v2
@@ -24,10 +24,61 @@ jobs:
       working-directory:
         ./scripts
     - name: Generate 2D annotation files
-        run: |
-          python annotation-generation-2d.py
-        working-directory:
-          ./scripts
+      run: |
+        python annotation-generation-2d.py
+      working-directory:
+        ./scripts
+
     - name: Running training
       run: |
         python train.py --config configs/training/1804.06812.json
+
+  MobileNetV2:
+    runs-on: ubuntu-16.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+      - name: Install dependencies
+        run: |
+          python -m pip install -r requirements.txt
+      - name: Generate data files
+        run: |
+          python dataset-generation-pool.py
+        working-directory:
+          ./scripts
+      - name: Generate 2D annotation files
+      run: |
+        python annotation-generation-2d.py
+      working-directory:
+        ./scripts
+      - name: Running training
+        run: |
+          python train.py --config configs/training/MobileNet.json
+
+  EfficientNetB4:
+    runs-on: ubuntu-16.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+      - name: Install dependencies
+        run: |
+          python -m pip install -r requirements.txt
+      - name: Generate data files
+        run: |
+          python dataset-generation-pool.py
+        working-directory:
+          ./scripts
+      - name: Generate 2D annotation files
+      run: |
+        python annotation-generation-2d.py
+      working-directory:
+        ./scripts
+      - name: Running training
+        run: |
+          python train.py --config configs/training/EfficientNetB4.json
