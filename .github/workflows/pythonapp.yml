@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 
 jobs:
-  CI:
+  Environment:
     runs-on: ubuntu-16.04
     steps:
     - uses: actions/checkout@v2
@@ -24,13 +24,15 @@ jobs:
       working-directory:
         ./scripts
 
+  arxiv/org/abs/1804.06812:
+    needs: [Environment]
+    steps:
     - name: Generate 2D annotation files
-      run: |
-        python annotation-generation-2d.py
-      working-directory:
-        ./scripts
+        run: |
+          python annotation-generation-2d.py
+        working-directory:
+          ./scripts
 
-
-    - name: Running https://arxiv.org/abs/1804.06812
-      run: |
-        python train.py --config configs/training/1804.06812.json
+        - name: Running arxiv.org/abs/1804.06812
+          run: |
+            python train.py --config configs/training/1804.06812.json
