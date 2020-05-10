@@ -2,9 +2,9 @@ name: ECG
 
 on:
   push:
-    branches: [ feature/actions-ci ]
+    branches: [ dev, feature/actions-ci ]
   pull_request:
-    branches: [ feature/actions-ci ]
+    branches: [ master ]
 
 jobs:
   CI:
@@ -18,18 +18,19 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install -r requirements.txt
-    - name: Generate data files
+    - name: Generate data files (128 (+-64 from the peak))
       run : |
         python dataset-generation-pool.py
       working-directory:
         ./scripts
 
-    - name: Generate annotation files
+    - name: Generate 2D annotation files
       run: |
-        python annotation-generation-1d.py
+        python annotation-generation-2d.py
       working-directory:
         ./scripts
 
-    - name : Train network
+
+    - name: Running https://arxiv.org/abs/1804.06812
       run: |
-        python main.py
+        python train.py --config configs/training/1804.06812.json
