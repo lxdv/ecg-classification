@@ -24,7 +24,7 @@ jobs:
       working-directory:
         ./scripts
 
-  arxiv/org/abs/1804.06812:
+  arxiv:
     needs: [Environment]
     runs-on: ubuntu-16.04
     steps:
