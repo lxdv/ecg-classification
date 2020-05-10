@@ -50,10 +50,10 @@ jobs:
         working-directory:
           ./scripts
       - name: Generate 2D annotation files
-      run: |
-        python annotation-generation-2d.py
-      working-directory:
-        ./scripts
+        run: |
+          python annotation-generation-2d.py
+        working-directory:
+          ./scripts
       - name: Running training
         run: |
           python train.py --config configs/training/MobileNet.json
@@ -75,10 +75,10 @@ jobs:
         working-directory:
           ./scripts
       - name: Generate 2D annotation files
-      run: |
-        python annotation-generation-2d.py
-      working-directory:
-        ./scripts
+        run: |
+          python annotation-generation-2d.py
+        working-directory:
+          ./scripts
       - name: Running training
         run: |
           python train.py --config configs/training/EfficientNetB4.json
