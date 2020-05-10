@@ -14,7 +14,7 @@ The repository follows *config* principle and can be run in the following modes:
 - Validation - use `inference.py --config configs/inference/config.json` to validate the model
 - Pipeline - use `pipeline.py --config configs/pipelines/config/json` to test the model using ECG data (i.e. data generation, running, visualization the results)
 
-All available models and all necessary information are described below.
+All available models and all necessary information are described below
 
 ***GitHub actions** are used for installing dependencies and running implemented models*
 
@@ -43,4 +43,17 @@ National Research University - Higher School of Economics
 
 ## Getting started
 
-- 
+Quick start:
+
+1. [Download](https://storage.googleapis.com/mitdb-1.0.0.physionet.org/mit-bih-arrhythmia-database-1.0.0.zip) 
+and unzip files into `mit-bih` directory
+2. Install requirements via `pip install -r requirements.txt`
+3. Generate 1D and 2D data files running `cd scripts && python dataset-generation-pool.py`
+4. Create `json` annotation files
+    - For 1D model - `cd scripts && python annotation-generation-1d.py`
+    - For 2D model - `cd scripts && python annotation-generation-2d.py`
+        
+See [CI](https://github.com/lxdv/ecg-classification/actions) settings for each model
+
+
+
