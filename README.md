@@ -79,12 +79,12 @@ The repository contains Jupyter Notebooks (see `notebooks` folder)
 
 ## Contributors
 
-* Alexander Lyashuk - <lyashuk.me@gmail.com>
-* Nikolai Zolotykh - <nikolai.zolotykh@gmail.com>
+* [Alexander Lyashuk](mailto:lyashuk.me@gmail.com)
+* [Nikolai Zolotykh](mailto:nikolai.zolotykh@gmail.com)
 
 ## Support
 
-Please give a ⭐️ if this project helped you!
+Please give a ⭐️ if this project helped you
 
 
 ## License
