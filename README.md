@@ -57,4 +57,16 @@ and unzip files into `mit-bih` directory
 See [CI examples](https://github.com/lxdv/ecg-classification/actions) for each model
 
 
-### MIT-BIH Dataset
+## Testing and visu
+
+
+## Experiments
+
+The code of all experiments described in the [table](https://docs.google.com/spreadsheets/d/159OjSlXuItvngeQwBxC5NaQbU9PjaMN4mY--bX26m1o)
+is in branches **experiments/exp-XXX**
+
+## Other
+
+The repository contains Jupyter Notebooks (see `notebooks` folder)
+
+![image](etc/confusion-matrix.png)
