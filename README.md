@@ -41,6 +41,18 @@ National Research University - Higher School of Economics
 - EfficientNetB4 ![EfficientNetB4](https://github.com/lxdv/ecg-classification/workflows/EfficientNetB4/badge.svg)
 
 
+#### Metrics
+
+|  **name** | **type** | **leads** | **model** | **accuracy** | **val loss** | **epoch** | **batch** | **lr_optim** |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+|  exp-025 | 1D (1x128) - [PEAK[t] - 64, PEAK[t] + 64] | MLII | https://arxiv.org/pdf/1707.01836.pdf | 0,9827 | 0,0726 | 19 | 128 | 0,001 (Adam ) |
+|  exp-030 | 1D (1x128) - [PEAK[t] - 64, PEAK[t] + 64] | MLII | https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8952723 | 0,9864 | 1,5 | 509 | 128 | 0,001 (Adam ) |
+|  exp-031 | 1D (1x128) - [PEAK[t] - 64, PEAK[t] + 64] | MLII | https://arxiv.org/pdf/2002.00254.pdf | 0,9886 | 0,15 | 645 | 128 | 0,001 (Adam ) |
+|  exp-018 | 2D (128x128) - [PEAK[t] - 64, PEAK[t] + 64] | MLII | https://arxiv.org/pdf/1804.06812.pdf | 0,9920 | 0,1 | 76 | 64 | 0,001 (Adam / 0.95 decay every 1k iter) |
+|  exp-013 | 2D (128x128) - [PEAK[t] - 64, PEAK[t] + 64] | MLII | MobileNetV2 | 0,9934 | 0,088 | 251 | 128 | 0,001 (Adam ) |
+|  exp-021 | 2D (128x128) - [PEAK[t-1] + 20, PEAK[t+1] - 20] | MLII | EfficientNetB4 | 0,9935 | 0,062 | 154 | 128 | 0,001 (Adam ) |
+|  exp-029 | 1D (1x128) - [PEAK[t] - 64, PEAK[t] + 64] | MLII | Novel (ECG ResNet34) | **0,9938** | **0,0500** | 634 | 128 | 0,001 (Adam ) |
+
 ## Getting started
 
 Training quick start:

@@ -3,7 +3,7 @@
   "type": "Pipeline1D",
   "device": "cuda:0",
   "model": "EcgResNet34",
-  "model_path": "./experiments/exp-029/checkpoints/00000635.pth",
+  "model_path": "./experiments/EcgResNet34/checkpoints/00000635.pth",
   "ecg_data": "./mit-bih/100",
 
   "json": "data/val.json",
