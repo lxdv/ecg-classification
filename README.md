@@ -71,11 +71,28 @@ See [CI examples](https://github.com/lxdv/ecg-classification/actions) for each m
 
 ## Testing and visualization
 
-- Create directory named `experiments`
-- [Download](https://drive.google.com/open?id=1AGqImGEXxdMqNu1Q_MtXGSzyHV4ge6el) the archive and unzip its content into `experiments` directory
-- Download [WFDB format](https://www.physionet.org/physiotools/wpg/wpg_35.htm) data
-- Change ECG
+*Using EcgResNet34 model it shows best metrics*
 
+1. Install requirements via pip install -r requirements.txt
+2. Create directory named `experiments`
+3. [Download](https://drive.google.com/open?id=1AGqImGEXxdMqNu1Q_MtXGSzyHV4ge6el) the archive and unzip its content into `experiments` directory
+4. Download [WFDB format](https://www.physionet.org/physiotools/wpg/wpg_35.htm) data
+5. Change `ecg_data` path in `configs/pipelines/config.json` **with no extension**
+
+```json
+{
+  ...
+  "ecg_data": "./mit-bih/100",
+  ...
+}
+```
+6.  Run pipeline - `python pipeline.py --configs/pipelines/config.json`
+
+
+
+The results will be saved as HTML file in `experiments/EcgResNet34/results` directory
+
+![image](etc/pipeline-example.png)
 
 ## Experiments
 
