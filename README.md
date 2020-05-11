@@ -23,7 +23,7 @@ Program - **Data Mining**
 Department - **Computer Science**
 
 Principal Investigator - **Nikolai Yu. Zolotykh**  
-National Research University - Higher School of Economics
+*National Research University - Higher School of Economics*
 
 ## Implemented models
 
