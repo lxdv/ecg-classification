@@ -57,7 +57,12 @@ and unzip files into `mit-bih` directory
 See [CI examples](https://github.com/lxdv/ecg-classification/actions) for each model
 
 
-## Testing and visu
+## Testing and visualization
+
+- Create directory named `experiments`
+- [Download](https://drive.google.com/open?id=1AGqImGEXxdMqNu1Q_MtXGSzyHV4ge6el) the archive and unzip its content into `experiments` directory
+- Download [WFDB format](https://www.physionet.org/physiotools/wpg/wpg_35.htm) data
+- Change ECG
 
 
 ## Experiments
@@ -72,11 +77,15 @@ The repository contains Jupyter Notebooks (see `notebooks` folder)
 ![image](etc/confusion-matrix.png)
 
 
-## License
-This project is licensed under the MIT License
-
-
 ## Contributors
 
 * Alexander Lyashuk - <lyashuk.me@gmail.com>
 * Nikolai Zolotykh - <nikolai.zolotykh@gmail.com>
+
+## Support
+
+Please give a ⭐️ if this project helped you!
+
+
+## License
+This project is licensed under the [MIT](LICENCE) License
