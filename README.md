@@ -79,7 +79,7 @@ See [CI examples](https://github.com/lxdv/ecg-classification/actions) for each m
 4. Download [WFDB format](https://www.physionet.org/physiotools/wpg/wpg_35.htm) data
 5. Change `ecg_data` path in `configs/pipelines/config.json` **with no extension**
 
-```json
+```
 {
   ...
   "ecg_data": "./mit-bih/100",
