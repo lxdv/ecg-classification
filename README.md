@@ -2,9 +2,9 @@
 
 ![image](etc/pipeline-viz.png)
 
-The repository contains code (***PyTorch*** framework) for Master's degree dissertation  - 
+The repository contains code for Master's degree dissertation  - 
 **Diagnosis of Diseases by ECG Using Convolutional Neural Networks**.
-Only CNN neural network models are considered in the paper and repository. 
+Only CNN neural network models are considered in the paper and the repository. 
 As a part of the work, more than 30 experiments have been run. 
 The table with all experiments and their metrics is available by the [link](https://docs.google.com/spreadsheets/d/159OjSlXuItvngeQwBxC5NaQbU9PjaMN4mY--bX26m1o)
 
@@ -16,14 +16,14 @@ The repository follows *config* principle and can be run in the following modes:
 
 All available models and all necessary information are described below
 
-***GitHub actions** are used for installing dependencies and running implemented models*
+***Python 3.7** and **PyTorch** are used in the project*  
+***GitHub actions** are used for installing dependencies and training implemented models*
 
 Program - **Data Mining**  
 Department - **Computer Science**
 
 Principal Investigator - **Nikolai Yu. Zolotykh**  
 National Research University - Higher School of Economics
-
 
 ## Implemented models
 
@@ -71,7 +71,7 @@ See [CI examples](https://github.com/lxdv/ecg-classification/actions) for each m
 
 ## Testing and visualization
 
-*Using EcgResNet34 model it shows best metrics*
+*Using EcgResNet34 model as it shows the best metrics*
 
 1. Install requirements via pip install -r requirements.txt
 2. Create directory named `experiments`
