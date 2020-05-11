@@ -70,3 +70,13 @@ is in branches **experiments/exp-XXX**
 The repository contains Jupyter Notebooks (see `notebooks` folder)
 
 ![image](etc/confusion-matrix.png)
+
+
+## License
+This project is licensed under the MIT License
+
+
+## Contributors
+
+* Alexander Lyashuk - <lyashuk.me@gmail.com>
+* Nikolai Zolotykh - <nikolai.zolotykh@gmail.com>
