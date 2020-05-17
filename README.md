@@ -43,15 +43,15 @@ Principal Investigator - **Nikolai Yu. Zolotykh**
 
 #### Metrics
 
-|  **name** | **type** | **leads** | **model** | **accuracy** | **val loss** | **epoch** | **batch** |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-|  exp-025 | 1D (1x128) - [PEAK[t] - 64, PEAK[t] + 64] | MLII | https://arxiv.org/pdf/1707.01836.pdf | 0,9827 | 0,0726 | 19 | 128 |
-|  exp-030 | 1D (1x128) - [PEAK[t] - 64, PEAK[t] + 64] | MLII | https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8952723 | 0,9864 | 1,5 | 509 | 128 |
-|  exp-031 | 1D (1x128) - [PEAK[t] - 64, PEAK[t] + 64] | MLII | https://arxiv.org/pdf/2002.00254.pdf | 0,9886 | 0,15 | 645 | 128 |
-|  exp-018 | 2D (128x128) - [PEAK[t] - 64, PEAK[t] + 64] | MLII | https://arxiv.org/pdf/1804.06812.pdf | 0,9920 | 0,1 | 76 | 64 |
-|  exp-013 | 2D (128x128) - [PEAK[t] - 64, PEAK[t] + 64] | MLII | MobileNetV2 | 0,9934 | 0,088 | 251 | 128 |
-|  exp-021 | 2D (128x128) - [PEAK[t-1] + 20, PEAK[t+1] - 20] | MLII | EfficientNetB4 | 0,9935 | 0,062 | 154 | 128 |
-|  exp-029 | 1D (1x128) - [PEAK[t] - 64, PEAK[t] + 64] | MLII | Novel | **0,9938** | **0,0500** | 634 | 128 |
+|  **name** | **type** | **leads** | **model** | **accuracy** | **val loss** |
+| --- | --- | --- | --- | --- | --- |
+|  exp-025 | 1D (1x128) - [PEAK[t] - 64, PEAK[t] + 64] | MLII | https://arxiv.org/pdf/1707.01836.pdf | 0,9827 | 0,0726 |
+|  exp-030 | 1D (1x128) - [PEAK[t] - 64, PEAK[t] + 64] | MLII | https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8952723 | 0,9864 | 1,5 |
+|  exp-031 | 1D (1x128) - [PEAK[t] - 64, PEAK[t] + 64] | MLII | https://arxiv.org/pdf/2002.00254.pdf | 0,9886 | 0,15 |
+|  exp-018 | 2D (128x128) - [PEAK[t] - 64, PEAK[t] + 64] | MLII | https://arxiv.org/pdf/1804.06812.pdf | 0,9920 | 0,1 |
+|  exp-013 | 2D (128x128) - [PEAK[t] - 64, PEAK[t] + 64] | MLII | MobileNetV2 | 0,9934 | 0,088 |
+|  exp-021 | 2D (128x128) - [PEAK[t-1] + 20, PEAK[t+1] - 20] | MLII | EfficientNetB4 | 0,9935 | 0,062 |
+|  exp-029 | 1D (1x128) - [PEAK[t] - 64, PEAK[t] + 64] | MLII | Novel EcgResNet34 | **0,9938** | **0,0500** |
 
 ## Getting started
 
