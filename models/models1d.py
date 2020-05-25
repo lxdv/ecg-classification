@@ -182,8 +182,6 @@ class HeartNet(nn.Module):
 
     def forward(self, x):
         x = self.conv1(x)
-        x = self.bn1(x)
-        x = self.relu(x)
 
         x = self.layer0(x)
         x = self.layer1(x)
@@ -278,8 +276,6 @@ class EcgResNet34(nn.Module):
 
     def forward(self, x):
         x = self.conv1(x)
-        x = self.bn1(x)
-        x = self.relu(x)
 
         x = self.layer1(x)
         x = self.layer2(x)
