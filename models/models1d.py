@@ -45,6 +45,7 @@ class BasicBlockHeartNet(nn.Module):
 
         if self.downsample is not None:
             identity = self.downsample(x)
+        if self.stride != 1:
             identity = F.max_pool1d(identity, self.stride)
 
         out += identity
