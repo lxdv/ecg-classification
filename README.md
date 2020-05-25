@@ -1,6 +1,6 @@
 # ECG Arrhythmia classification
 
-![image](etc/pipeline-viz.png)
+![pipeline-viz](etc/pipeline-viz.png)
 
 The repository contains code for Master's degree dissertation  - 
 **Diagnosis of Diseases by ECG Using Convolutional Neural Networks**.
