@@ -75,7 +75,7 @@ See [CI examples](https://github.com/lxdv/ecg-classification/actions) for each m
 
 1. Install requirements via pip install -r requirements.txt
 2. Create directory named `experiments`
-3. [Download](https://drive.google.com/open?id=1AGqImGEXxdMqNu1Q_MtXGSzyHV4ge6el) the archive and unzip its content into `experiments` directory
+3. [Download](https://drive.google.com/file/d/1wCy9Y4EQmI3gdVTX77U7ZXa5zPaqLQ5S/view?usp=sharing) the archive and unzip its content into `experiments` directory
 4. Download [WFDB format](https://www.physionet.org/physiotools/wpg/wpg_35.htm) data
 5. Change `ecg_data` path in `configs/pipelines/config.json` **with no extension**
 

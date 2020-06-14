@@ -19,7 +19,7 @@ class EcgDataset2D(Dataset):
 
     def __getitem__(self, index):
         img = cv2.imread(self.data[index]['path'])
-        img = augment(**{"image": img})['image']
+        img = augment(**{"image": img})['image'][..., :1]
 
         return {
             "image": img,
