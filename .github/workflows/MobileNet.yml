@@ -2,9 +2,9 @@ name: MobileNetV2
 
 on:
   push:
-    branches: [ dev, feature/actions-ci ]
+    branches: [dev, feature/actions-ci]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   Train:
@@ -21,13 +21,11 @@ jobs:
       - name: Generate data files
         run: |
           python dataset-generation-pool.py
-        working-directory:
-          ./scripts
+        working-directory: ./scripts
       - name: Generate 2D annotation files
         run: |
           python annotation-generation-2d.py
-        working-directory:
-          ./scripts
+        working-directory: ./scripts
       - name: Running training
         run: |
           python train.py --config configs/training/MobileNet.json

@@ -1,6 +1,6 @@
 import torch.nn as nn
-from torchvision import models
 from efficientnet_pytorch import EfficientNet as efficientnet
+from torchvision import models
 
 
 class HeartNet(nn.Module):
@@ -28,7 +28,7 @@ class HeartNet(nn.Module):
             nn.Conv2d(256, 256, kernel_size=3, stride=1, padding=1),
             nn.ELU(inplace=True),
             nn.BatchNorm2d(256, eps=0.001),
-            nn.MaxPool2d(kernel_size=2, stride=2)
+            nn.MaxPool2d(kernel_size=2, stride=2),
         )
 
         self.classifier = nn.Sequential(
@@ -36,7 +36,7 @@ class HeartNet(nn.Module):
             nn.ELU(inplace=True),
             nn.BatchNorm1d(2048, eps=0.001),
             nn.Dropout(0.5),
-            nn.Linear(2048, num_classes)
+            nn.Linear(2048, num_classes),
         )
 
     def forward(self, x):
@@ -81,6 +81,6 @@ def ShuffleNet(num_classes=8):
 
 
 def EfficientNetB4(num_classes=8):
-    model = efficientnet.from_name('efficientnet-b4')
+    model = efficientnet.from_name("efficientnet-b4")
     model._fc = nn.Linear(model._fc.in_features, num_classes)
     return model
