@@ -3,8 +3,16 @@ import torch.nn.functional as F
 
 
 def conv_block(in_planes, out_planes, stride=1, groups=1, dilation=1):
-    return nn.Conv1d(in_planes, out_planes, kernel_size=17, stride=stride,
-                     padding=8, groups=groups, bias=False, dilation=dilation)
+    return nn.Conv1d(
+        in_planes,
+        out_planes,
+        kernel_size=17,
+        stride=stride,
+        padding=8,
+        groups=groups,
+        bias=False,
+        dilation=dilation,
+    )
 
 
 def conv_subsumpling(in_planes, out_planes, stride=1):
@@ -14,13 +22,22 @@ def conv_subsumpling(in_planes, out_planes, stride=1):
 class BasicBlockHeartNet(nn.Module):
     expansion = 1
 
-    def __init__(self, inplanes, planes, stride=1, downsample=None, groups=1,
-                 base_width=64, dilation=1, norm_layer=None):
+    def __init__(
+        self,
+        inplanes,
+        planes,
+        stride=1,
+        downsample=None,
+        groups=1,
+        base_width=64,
+        dilation=1,
+        norm_layer=None,
+    ):
         super(BasicBlockHeartNet, self).__init__()
         if norm_layer is None:
             norm_layer = nn.BatchNorm1d
         if groups != 1 or base_width != 64:
-            raise ValueError('BasicBlock only supports groups=1 and base_width=64')
+            raise ValueError("BasicBlock only supports groups=1 and base_width=64")
         if dilation > 1:
             raise NotImplementedError("Dilation > 1 not supported in BasicBlock")
         # Both self.conv1 and self.downsample layers downsample the input when stride != 1
@@ -45,8 +62,9 @@ class BasicBlockHeartNet(nn.Module):
 
         if self.downsample is not None:
             identity = self.downsample(x)
-        if self.stride != 1:
             identity = F.max_pool1d(identity, self.stride)
+        else:
+            identity = F.max_pool1d(identity, 1)
 
         out += identity
 
@@ -56,13 +74,22 @@ class BasicBlockHeartNet(nn.Module):
 class BasicBlock(nn.Module):
     expansion = 1
 
-    def __init__(self, inplanes, planes, stride=1, downsample=None, groups=1,
-                 base_width=64, dilation=1, norm_layer=None):
+    def __init__(
+        self,
+        inplanes,
+        planes,
+        stride=1,
+        downsample=None,
+        groups=1,
+        base_width=64,
+        dilation=1,
+        norm_layer=None,
+    ):
         super(BasicBlock, self).__init__()
         if norm_layer is None:
             norm_layer = nn.BatchNorm1d
         if groups != 1 or base_width != 64:
-            raise ValueError('BasicBlock only supports groups=1 and base_width=64')
+            raise ValueError("BasicBlock only supports groups=1 and base_width=64")
         if dilation > 1:
             raise NotImplementedError("Dilation > 1 not supported in BasicBlock")
         # Both self.conv1 and self.downsample layers downsample the input when stride != 1
@@ -97,10 +124,17 @@ class BasicBlock(nn.Module):
 
 
 class HeartNet(nn.Module):
-
-    def __init__(self, layers=(1, 2, 2, 2, 2, 2, 2, 2, 1), num_classes=1000, zero_init_residual=False,
-                 groups=1, width_per_group=64, replace_stride_with_dilation=None,
-                 norm_layer=None, block=BasicBlockHeartNet):
+    def __init__(
+        self,
+        layers=(1, 2, 2, 2, 2, 2, 2, 2, 1),
+        num_classes=1000,
+        zero_init_residual=False,
+        groups=1,
+        width_per_group=64,
+        replace_stride_with_dilation=None,
+        norm_layer=None,
+        block=BasicBlockHeartNet,
+    ):
 
         super(HeartNet, self).__init__()
         if norm_layer is None:
@@ -114,36 +148,46 @@ class HeartNet(nn.Module):
             # the 2x2 stride with a dilated convolution instead
             replace_stride_with_dilation = [False, False, False]
         if len(replace_stride_with_dilation) != 3:
-            raise ValueError("replace_stride_with_dilation should be None "
-                             "or a 3-element tuple, got {}".format(replace_stride_with_dilation))
+            raise ValueError(
+                "replace_stride_with_dilation should be None "
+                "or a 3-element tuple, got {}".format(replace_stride_with_dilation),
+            )
         self.groups = groups
         self.base_width = width_per_group
-        self.conv1 = conv_block(1, self.inplanes, stride=1,)
+        self.conv1 = conv_block(1, self.inplanes, stride=1)
         self.bn1 = norm_layer(self.inplanes)
         self.relu = nn.ReLU(inplace=True)
         self.layer0 = self._make_layer(block, 64, layers[0])
-        self.layer1 = self._make_layer(block, 64, layers[1], stride=2,
-                                       dilate=replace_stride_with_dilation[0])
-        self.layer2 = self._make_layer(block, 128, layers[2], stride=2,
-                                       dilate=replace_stride_with_dilation[0])
-        self.layer2_ = self._make_layer(block, 128, layers[3], stride=2,
-                                       dilate=replace_stride_with_dilation[0])
-        self.layer3 = self._make_layer(block, 256, layers[4], stride=2,
-                                       dilate=replace_stride_with_dilation[1])
-        self.layer3_ = self._make_layer(block, 256, layers[5], stride=2,
-                                       dilate=replace_stride_with_dilation[1])
-        self.layer4 = self._make_layer(block, 512, layers[6], stride=2,
-                                       dilate=replace_stride_with_dilation[2])
-        self.layer4_ = self._make_layer(block, 512, layers[7], stride=2,
-                                       dilate=replace_stride_with_dilation[2])
-        self.layer5 = self._make_layer(block, 1024, layers[8], stride=2,
-                                       dilate=replace_stride_with_dilation[2])
+        self.layer1 = self._make_layer(
+            block, 64, layers[1], stride=2, dilate=replace_stride_with_dilation[0],
+        )
+        self.layer2 = self._make_layer(
+            block, 128, layers[2], stride=2, dilate=replace_stride_with_dilation[0],
+        )
+        self.layer2_ = self._make_layer(
+            block, 128, layers[3], stride=2, dilate=replace_stride_with_dilation[0],
+        )
+        self.layer3 = self._make_layer(
+            block, 256, layers[4], stride=2, dilate=replace_stride_with_dilation[1],
+        )
+        self.layer3_ = self._make_layer(
+            block, 256, layers[5], stride=2, dilate=replace_stride_with_dilation[1],
+        )
+        self.layer4 = self._make_layer(
+            block, 512, layers[6], stride=2, dilate=replace_stride_with_dilation[2],
+        )
+        self.layer4_ = self._make_layer(
+            block, 512, layers[7], stride=2, dilate=replace_stride_with_dilation[2],
+        )
+        self.layer5 = self._make_layer(
+            block, 1024, layers[8], stride=2, dilate=replace_stride_with_dilation[2],
+        )
         self.avgpool = nn.AdaptiveAvgPool1d(1)
         self.fc = nn.Linear(1024 * block.expansion, num_classes)
 
         for m in self.modules():
             if isinstance(m, nn.Conv1d):
-                nn.init.kaiming_normal_(m.weight, mode='fan_out', nonlinearity='relu')
+                nn.init.kaiming_normal_(m.weight, mode="fan_out", nonlinearity="relu")
             elif isinstance(m, (nn.BatchNorm1d, nn.GroupNorm)):
                 nn.init.constant_(m.weight, 1)
                 nn.init.constant_(m.bias, 0)
@@ -166,22 +210,41 @@ class HeartNet(nn.Module):
             stride = 1
         if stride != 1 or self.inplanes != planes * block.expansion:
             downsample = nn.Sequential(
-                conv_subsumpling(self.inplanes, planes * block.expansion)
+                conv_subsumpling(self.inplanes, planes * block.expansion),
             )
 
         layers = []
-        layers.append(block(self.inplanes, planes, stride, downsample, self.groups,
-                            self.base_width, previous_dilation, norm_layer))
+        layers.append(
+            block(
+                self.inplanes,
+                planes,
+                stride,
+                downsample,
+                self.groups,
+                self.base_width,
+                previous_dilation,
+                norm_layer,
+            ),
+        )
         self.inplanes = planes * block.expansion
         for _ in range(1, blocks):
-            layers.append(block(self.inplanes, planes, groups=self.groups,
-                                base_width=self.base_width, dilation=self.dilation,
-                                norm_layer=norm_layer))
+            layers.append(
+                block(
+                    self.inplanes,
+                    planes,
+                    groups=self.groups,
+                    base_width=self.base_width,
+                    dilation=self.dilation,
+                    norm_layer=norm_layer,
+                ),
+            )
 
         return nn.Sequential(*layers)
 
     def forward(self, x):
         x = self.conv1(x)
+        x = self.bn1(x)
+        x = self.relu(x)
 
         x = self.layer0(x)
         x = self.layer1(x)
@@ -201,10 +264,17 @@ class HeartNet(nn.Module):
 
 
 class EcgResNet34(nn.Module):
-
-    def __init__(self, layers=(1, 5, 5, 5), num_classes=1000, zero_init_residual=False,
-                 groups=1, width_per_group=64, replace_stride_with_dilation=None,
-                 norm_layer=None, block=BasicBlock):
+    def __init__(
+        self,
+        layers=(1, 5, 5, 5),
+        num_classes=1000,
+        zero_init_residual=False,
+        groups=1,
+        width_per_group=64,
+        replace_stride_with_dilation=None,
+        norm_layer=None,
+        block=BasicBlock,
+    ):
 
         super(EcgResNet34, self).__init__()
         if norm_layer is None:
@@ -218,26 +288,31 @@ class EcgResNet34(nn.Module):
             # the 2x2 stride with a dilated convolution instead
             replace_stride_with_dilation = [False, False, False]
         if len(replace_stride_with_dilation) != 3:
-            raise ValueError("replace_stride_with_dilation should be None "
-                             "or a 3-element tuple, got {}".format(replace_stride_with_dilation))
+            raise ValueError(
+                "replace_stride_with_dilation should be None "
+                "or a 3-element tuple, got {}".format(replace_stride_with_dilation),
+            )
         self.groups = groups
         self.base_width = width_per_group
-        self.conv1 = conv_block(1, self.inplanes, stride=1,)
+        self.conv1 = conv_block(1, self.inplanes, stride=1)
         self.bn1 = norm_layer(self.inplanes)
         self.relu = nn.ReLU(inplace=True)
         self.layer1 = self._make_layer(block, 64, layers[0])
-        self.layer2 = self._make_layer(block, 128, layers[1], stride=2,
-                                       dilate=replace_stride_with_dilation[0])
-        self.layer3 = self._make_layer(block, 256, layers[2], stride=2,
-                                       dilate=replace_stride_with_dilation[1])
-        self.layer4 = self._make_layer(block, 512, layers[3], stride=2,
-                                       dilate=replace_stride_with_dilation[2])
+        self.layer2 = self._make_layer(
+            block, 128, layers[1], stride=2, dilate=replace_stride_with_dilation[0],
+        )
+        self.layer3 = self._make_layer(
+            block, 256, layers[2], stride=2, dilate=replace_stride_with_dilation[1],
+        )
+        self.layer4 = self._make_layer(
+            block, 512, layers[3], stride=2, dilate=replace_stride_with_dilation[2],
+        )
         self.avgpool = nn.AdaptiveAvgPool1d(1)
         self.fc = nn.Linear(512 * block.expansion, num_classes)
 
         for m in self.modules():
             if isinstance(m, nn.Conv1d):
-                nn.init.kaiming_normal_(m.weight, mode='fan_out', nonlinearity='relu')
+                nn.init.kaiming_normal_(m.weight, mode="fan_out", nonlinearity="relu")
             elif isinstance(m, (nn.BatchNorm1d, nn.GroupNorm)):
                 nn.init.constant_(m.weight, 1)
                 nn.init.constant_(m.bias, 0)
@@ -264,18 +339,37 @@ class EcgResNet34(nn.Module):
             )
 
         layers = []
-        layers.append(block(self.inplanes, planes, stride, downsample, self.groups,
-                            self.base_width, previous_dilation, norm_layer))
+        layers.append(
+            block(
+                self.inplanes,
+                planes,
+                stride,
+                downsample,
+                self.groups,
+                self.base_width,
+                previous_dilation,
+                norm_layer,
+            ),
+        )
         self.inplanes = planes * block.expansion
         for _ in range(1, blocks):
-            layers.append(block(self.inplanes, planes, groups=self.groups,
-                                base_width=self.base_width, dilation=self.dilation,
-                                norm_layer=norm_layer))
+            layers.append(
+                block(
+                    self.inplanes,
+                    planes,
+                    groups=self.groups,
+                    base_width=self.base_width,
+                    dilation=self.dilation,
+                    norm_layer=norm_layer,
+                ),
+            )
 
         return nn.Sequential(*layers)
 
     def forward(self, x):
         x = self.conv1(x)
+        x = self.bn1(x)
+        x = self.relu(x)
 
         x = self.layer1(x)
         x = self.layer2(x)
@@ -303,13 +397,11 @@ class HeartNetIEEE(nn.Module):
             nn.ReLU(inplace=True),
             nn.Conv1d(128, 128, kernel_size=3),
             nn.ReLU(inplace=True),
-            nn.MaxPool1d(2)
+            nn.MaxPool1d(2),
         )
 
         self.classifier = nn.Sequential(
-            nn.Linear(128 * 28, 256),
-            nn.Linear(256, 128),
-            nn.Linear(128, num_classes)
+            nn.Linear(128 * 28, 256), nn.Linear(256, 128), nn.Linear(128, num_classes),
         )
 
     def forward(self, x):
@@ -317,7 +409,6 @@ class HeartNetIEEE(nn.Module):
         x = x.view(x.size(0), 128 * 28)
         x = self.classifier(x)
         return x
-
 
 
 class Flatten(nn.Module):
@@ -334,37 +425,31 @@ class ZolotyhNet(nn.Module):
             nn.BatchNorm1d(8),
             nn.ReLU(inplace=True),
             nn.MaxPool1d(2),
-
             nn.Conv1d(8, 16, kernel_size=3, padding=1),
             nn.BatchNorm1d(16),
             nn.ReLU(inplace=True),
             nn.MaxPool1d(2),
-
             nn.Conv1d(16, 32, kernel_size=3, padding=1),
             nn.BatchNorm1d(32),
             nn.ReLU(inplace=True),
             nn.MaxPool1d(2),
-
             nn.Conv1d(32, 32, kernel_size=3, padding=1),
             nn.BatchNorm1d(32),
             nn.ReLU(inplace=True),
             nn.MaxPool1d(2),
-
             nn.Conv1d(32, 1, kernel_size=3, padding=1),
             Flatten(),
         )
 
         self.features_down = nn.Sequential(
             Flatten(),
-            nn.Linear(128,64),
+            nn.Linear(128, 64),
             nn.BatchNorm1d(64),
             nn.ReLU(inplace=True),
-
             nn.Linear(64, 16),
             nn.BatchNorm1d(16),
             nn.ReLU(inplace=True),
-
-            nn.Linear(16, 8)
+            nn.Linear(16, 8),
         )
 
         self.classifier = nn.Linear(8, num_classes)

@@ -8,13 +8,17 @@ class Pipeline1D(BasePipeline):
         super().__init__(config)
 
     def _init_net(self):
-        model = getattr(models1d, self.config['model'])(num_classes=self.config['num_classes'])
-        model = model.to(self.config['device'])
+        model = getattr(models1d, self.config["model"])(
+            num_classes=self.config["num_classes"],
+        )
+        model = model.to(self.config["device"])
         return model
 
     def _init_dataloader(self):
-        inference_loader = EcgPipelineDataset1D(self.config['ecg_data']).get_dataloader(
-            batch_size=self.config['batch_size'], num_workers=self.config['num_workers'], shuffle=False
+        inference_loader = EcgPipelineDataset1D(self.config["ecg_data"]).get_dataloader(
+            batch_size=self.config["batch_size"],
+            num_workers=self.config["num_workers"],
+            shuffle=False,
         )
 
         return inference_loader

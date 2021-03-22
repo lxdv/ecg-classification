@@ -1,10 +1,10 @@
 import json
 
+import numpy as np
 import wfdb
 from scipy.signal import find_peaks
 from sklearn.preprocessing import scale
-from torch.utils.data import Dataset, DataLoader
-import numpy as np
+from torch.utils.data import DataLoader, Dataset
 
 
 class EcgDataset1D(Dataset):
@@ -14,16 +14,15 @@ class EcgDataset1D(Dataset):
         self.mapper = json.load(open(mapping_path))
 
     def __getitem__(self, index):
-        img = np.load(self.data[index]['path']).astype('float32')
+        img = np.load(self.data[index]["path"]).astype("float32")
         img = img.reshape(1, img.shape[0])
 
-        return {
-            "image": img,
-            "class": self.mapper[self.data[index]['label']]
-        }
+        return {"image": img, "class": self.mapper[self.data[index]["label"]]}
 
     def get_dataloader(self, num_workers=4, batch_size=16, shuffle=True):
-        data_loader = DataLoader(self, batch_size=batch_size, shuffle=shuffle, num_workers=num_workers)
+        data_loader = DataLoader(
+            self, batch_size=batch_size, shuffle=shuffle, num_workers=num_workers,
+        )
         return data_loader
 
     def __len__(self):
@@ -41,8 +40,8 @@ class EcgPipelineDataset1D(Dataset):
         self.signal = None
         self.mode = mode
         for sig_name, signal in zip(record.sig_name, record.p_signal.T):
-            if sig_name in ['MLII', 'II'] and np.all(np.isfinite(signal)):
-                self.signal = scale(signal).astype('float32')
+            if sig_name in ["MLII", "II"] and np.all(np.isfinite(signal)):
+                self.signal = scale(signal).astype("float32")
         if self.signal is None:
             raise Exception("No MLII LEAD")
 
@@ -59,13 +58,12 @@ class EcgPipelineDataset1D(Dataset):
         img = self.signal[left:right]
         img = img.reshape(1, img.shape[0])
 
-        return {
-            "image": img,
-            "peak": peak
-        }
+        return {"image": img, "peak": peak}
 
     def get_dataloader(self, num_workers=4, batch_size=16, shuffle=True):
-        data_loader = DataLoader(self, batch_size=batch_size, shuffle=shuffle, num_workers=num_workers)
+        data_loader = DataLoader(
+            self, batch_size=batch_size, shuffle=shuffle, num_workers=num_workers,
+        )
         return data_loader
 
     def __len__(self):
