@@ -2,9 +2,7 @@ name: 1804.06812
 
 on:
   push:
-    branches: [dev, feature/actions-ci]
-  pull_request:
-    branches: [master]
+    branches: [master, dev]
 
 jobs:
   Train:

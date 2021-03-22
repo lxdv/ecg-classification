@@ -2,9 +2,7 @@ name: 1911.IEEE
 
 on:
   push:
-    branches: [dev, feature/actions-ci]
-  pull_request:
-    branches: [master]
+    branches: [master, dev]
 
 jobs:
   Train:
