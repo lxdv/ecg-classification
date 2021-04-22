@@ -17,8 +17,8 @@ The repository follows _config_ principle and can be run in the following modes:
 
 All available models and all necessary information are described below
 
-**\*Python 3.7** and **PyTorch** are used in the project\*
-**\*GitHub actions** are used for installing dependencies and training implemented models\*
+**Python 3.7** and **PyTorch** are used in the project
+**GitHub actions** are used for installing dependencies and training implemented models
 
 Program - **Data Mining**
 Department - **Computer Science**
