@@ -64,7 +64,7 @@ Training quick start:
 4. Create `json` annotation files
    - For 1D model - `cd scripts && python annotation-generation-1d.py`
    - For 2D model - `cd scripts && python annotation-generation-2d.py`
-5. Run training - `python train.py --configs/training/<config>.json`
+5. Run training - `python train.py --config configs/training/<config>.json`
 
 See [CI examples](https://github.com/lxdv/ecg-classification/actions) for each model
 
