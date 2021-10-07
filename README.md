@@ -6,7 +6,7 @@ The repository contains code for Master's degree dissertation -
 **Diagnosis of Diseases by ECG Using Convolutional Neural Networks**.
 Only CNN neural network models are considered in the paper and the repository.
 As a part of the work, more than 30 experiments have been run.
-The table with all experiments and their metrics is available by the [link](https://docs.google.com/spreadsheets/d/159OjSlXuItvngeQwBxC5NaQbU9PjaMN4mY--bX26m1o)
+The table with all experiments and their metrics is available by the [link](https://docs.google.com/spreadsheets/d/1fmLNC1_1xohEUEoNRodkIoFHnJI3O4HfCHN8Ys_b7nE)
 
 The best **1D** and **2D** CNN models are presented in the repository
 The repository follows _config_ principle and can be run in the following modes:
