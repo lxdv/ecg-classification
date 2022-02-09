@@ -57,7 +57,7 @@ _National Research University - Higher School of Economics_
 
 Training quick start:
 
-1. [Download](https://storage.googleapis.com/mitdb-1.0.0.physionet.org/mit-bih-arrhythmia-database-1.0.0.zip)
+1. [Download](https://physionet.org/static/published-projects/mitdb/mit-bih-arrhythmia-database-1.0.0.zip)
    and unzip files into `mit-bih` directory
 2. Install requirements via `pip install -r requirements.txt`
 3. Generate 1D and 2D data files running `cd scripts && python dataset-generation-pool.py`
