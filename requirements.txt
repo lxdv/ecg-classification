@@ -2,7 +2,7 @@ albumentations==0.4.3
 efficientnet_pytorch==0.6.3
 future
 matplotlib==3.0.3
-numpy==1.21.0
+numpy==1.22.0
 opencv_python==4.2.0.32
 pandas==0.25.3
 plotly==4.7.0
