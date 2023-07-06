@@ -7,7 +7,7 @@ opencv_python==4.2.0.32
 pandas==0.25.3
 plotly==4.7.0
 scikit_learn==0.22.2.post1
-scipy==1.4.1
+scipy==1.10.0
 tensorboard==1.14
 torch==1.1.0
 torchvision==0.3.0
