@@ -9,7 +9,7 @@ plotly==4.7.0
 scikit_learn==0.22.2.post1
 scipy==1.4.1
 tensorboard==1.14
-torch==1.1.0
+torch==1.13.1
 torchvision==0.3.0
 tqdm==4.42.1
 wfdb==2.2.1
